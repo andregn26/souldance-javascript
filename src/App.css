@@ -1,0 +1,7 @@
+a {
+  text-decoration: none; /* no underline */
+}
+
+.selectedLink {
+  color: aliceblue;
+}
