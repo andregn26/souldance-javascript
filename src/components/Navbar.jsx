@@ -22,6 +22,7 @@ import {
 } from "@mui/material"
 import WidthContainer from "./WidthContainer"
 import { MainButton, NavButton } from "./Buttons"
+import ThemeButton from "./ThemeButton"
 
 function ElevationScroll(props) {
   const { children, window } = props
@@ -60,11 +61,27 @@ export default function NavBar({
           enableColorOnDark
           sx={{
             backgroundColor: theme.palette.background.default,
+            // border: "solid red 2px",
           }}
         >
+          {isNonMobile1000 && (
+            <Box
+              sx={{
+                top: "50%",
+                transform: "translateY(-50%)",
+                position: "absolute",
+                right: 16,
+                zIndex: 1000000,
+              }}
+            >
+              <ThemeButton />
+            </Box>
+          )}
+
           <WidthContainer>
             <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
               {/* LEFT SIDE */}
+
               <FlexBetween>
                 <Typography
                   sx={{
@@ -87,24 +104,8 @@ export default function NavBar({
 
               {/* RIGHT SIDE */}
               <FlexBetween>
-                <MainButton>Sabe Mais</MainButton>
-                <IconButton onClick={() => dispatch(setMode())}>
-                  {theme.palette.mode === "dark" ? (
-                    <LightModeOutlined
-                      sx={{
-                        fontSize: "25px",
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  ) : (
-                    <DarkModeOutlined
-                      sx={{
-                        fontSize: "25px",
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  )}
-                </IconButton>{" "}
+                {isNonMobile1000 && <MainButton>Sabe Mais</MainButton>}
+
                 {!isNonMobile1000 && (
                   <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <MenuIcon

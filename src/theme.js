@@ -87,6 +87,9 @@ export const themeSettings = (mode) => {
             background: {
               default: tokensDark.primary[1000],
             },
+            card: {
+              default: tokensDark.primary[900],
+            },
             text: {
               primary: tokensDark.grey[10],
               secondary: tokensDark.grey[10],
@@ -111,6 +114,9 @@ export const themeSettings = (mode) => {
             },
             background: {
               ...tokensLight.primary,
+              default: tokensDark.primary[50],
+            },
+            card: {
               default: tokensDark.primary[50],
             },
             text: {

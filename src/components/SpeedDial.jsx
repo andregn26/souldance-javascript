@@ -47,30 +47,25 @@ const SpeedDialTooltipOpen = () => {
         position: "fixed",
         bottom: 16,
         right: 16,
-        zIndex: 1000000,
       }}
     >
       <SpeedDial ariaLabel="SpeedDial tooltip example" icon={<SpeedDialIcon />}>
         <SpeedDialAction
           icon={<InstagramIcon />}
-          tooltipTitle={"Instagram aa"}
-          tooltipOpen
+          onClick={() => window.open("https://www.codexworld.com", "_blank")}
         />
 
         <SpeedDialAction
-          icon={<InstagramIcon />}
-          tooltipTitle={"Instagramaaa"}
-          tooltipOpen
+          icon={<FacebookOutlinedIcon />}
+          onClick={() => window.open("https://www.codexworld.com", "_blank")}
         />
         <SpeedDialAction
-          icon={<InstagramIcon />}
-          tooltipTitle={"Instagram"}
-          tooltipOpen
+          icon={<WhatsAppIcon />}
+          onClick={() => window.open("https://www.codexworld.com", "_blank")}
         />
         <SpeedDialAction
-          icon={<InstagramIcon />}
-          tooltipTitle={"Instagram"}
-          tooltipOpen
+          icon={<EmailOutlinedIcon />}
+          onClick={() => window.open("https://www.codexworld.com", "_blank")}
         />
       </SpeedDial>
     </Box>

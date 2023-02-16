@@ -13,12 +13,14 @@ import {
 } from "@mui/material"
 import WidthContainer from "@/components/WidthContainer"
 import { MainButton, SecondaryButton } from "../../../components/Buttons"
+import { useNavigate } from "react-router-dom"
 
 const Hero = () => {
   const theme = useTheme()
   const isNonMobile800 = useMediaQuery("(min-width: 800px)")
   const isNonMobile1200 = useMediaQuery("(min-width: 1200px)")
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   return (
     <MainSectionContainer sx={{ backgroundColor: theme.palette.background }}>
@@ -89,7 +91,9 @@ const Hero = () => {
                         }
                   }
                 >
-                  <MainButton>Junta-te a Nós</MainButton>
+                  <MainButton onClick={() => navigate("/fala-connosco")}>
+                    Junta-te a Nós
+                  </MainButton>
                   <SecondaryButton>Horários</SecondaryButton>
                 </Box>
               </Box>

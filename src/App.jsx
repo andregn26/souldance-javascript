@@ -8,8 +8,7 @@ import { setSelectedPage } from "@/state"
 import { themeSettings } from "./theme"
 import Layout from "@/scenes/layout"
 import Homepage from "@/scenes/homepage"
-import Form from "@/scenes/form"
-import SpeedDialTooltipOpen from "@/components/SpeedDial"
+import FormPage from "@/scenes/form"
 
 function App() {
   const dispatch = useDispatch()
@@ -35,11 +34,10 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {/* <SpeedDialTooltipOpen /> */}
           <Routes>
             <Route element={<Layout isTopOfPage={isTopOfPage} />}>
               <Route path="/" element={<Homepage />} />
-              <Route path="/fala-connosco" element={<Form />} />
+              <Route path="/fala-connosco" element={<FormPage />} />
             </Route>
           </Routes>
         </ThemeProvider>
