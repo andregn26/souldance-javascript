@@ -8,7 +8,7 @@ import {
   DarkModeOutlined,
   Menu as MenuIcon,
 } from "@mui/icons-material"
-import FlexBetween from "./FlexBetween"
+import FlexBetween from "../../../../components/FlexBetween"
 import {
   useTheme,
   AppBar,
@@ -20,9 +20,9 @@ import {
   useMediaQuery,
   CssBaseline,
 } from "@mui/material"
-import WidthContainer from "./WidthContainer"
-import { MainButton, NavButton } from "./Buttons"
-import ThemeButton from "./ThemeButton"
+import WidthContainer from "../../../../components/WidthContainer"
+import { MainButton, NavButton } from "../../../../components/Buttons"
+import ThemeButton from "../../../../components/ThemeButton"
 
 function ElevationScroll(props) {
   const { children, window } = props
@@ -47,12 +47,13 @@ export default function NavBar({
   props,
 }) {
   const isNonMobile1000 = useMediaQuery("(min-width: 1000px)")
-  const dispatch = useDispatch()
   const theme = useTheme()
-  const [anchorEl, setAnchorEl] = useState(null)
-  const isOpen = Boolean(anchorEl)
-  const handleClick = (event) => setAnchorEl(event.currentElement)
-  const handleClose = () => setAnchorEl(null)
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -64,34 +65,23 @@ export default function NavBar({
             // border: "solid red 2px",
           }}
         >
-          {isNonMobile1000 && (
-            <Box
-              sx={{
-                top: "50%",
-                transform: "translateY(-50%)",
-                position: "absolute",
-                right: 16,
-                zIndex: 1000000,
-              }}
-            >
-              <ThemeButton />
-            </Box>
-          )}
-
           <WidthContainer>
             <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
               {/* LEFT SIDE */}
 
               <FlexBetween>
                 <Typography
+                  onClick={goToTop}
                   sx={{
                     color: theme.palette.text.primary,
                     fontWeight: "bold",
                     letterSpacing: "1px",
+                    cursor: "pointer",
                   }}
                 >
                   SOULDANCE
                 </Typography>
+
                 {isNonMobile1000 && (
                   <Box width="100%" ml="4rem" display="flex" gap="3rem">
                     <Link page="Sobre Nós" />
@@ -104,7 +94,12 @@ export default function NavBar({
 
               {/* RIGHT SIDE */}
               <FlexBetween>
-                {isNonMobile1000 && <MainButton>Sabe Mais</MainButton>}
+                {isNonMobile1000 && (
+                  <Box display="flex" gap="2rem">
+                    <MainButton>Sabe Mais</MainButton>
+                    <ThemeButton />
+                  </Box>
+                )}
 
                 {!isNonMobile1000 && (
                   <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>

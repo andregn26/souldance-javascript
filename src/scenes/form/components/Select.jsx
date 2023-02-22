@@ -1,44 +1,57 @@
 import React from "react"
 import { Field, ErrorMessage } from "formik"
 import TextError from "./TextError"
-import { InputLabel, MenuItem, Select, FormHelperText } from "@mui/material"
+import {
+  InputLabel,
+  MenuItem,
+  Select,
+  FormHelperText,
+  Box,
+  FormControl,
+  useTheme,
+} from "@mui/material"
 
-const SelectFormik = (props) => {
-  const { label, name, options, ...rest } = props
+const CustomizedSelectForFormik = ({ children, form, field }) => {
+  const { name, value } = field
+  const { setFieldValue } = form
+
   return (
-    <>
-      <Select
-        labelId={`${name}-label`}
-        id={name}
-        name={name}
-        value={options}
-        fullWidth
-        {...rest}
-      >
-        {options.map((option) => {
-          return (
-            <MenuItem key={option.value} value={option.value}>
-              {option.key}
-            </MenuItem>
-          )
-        })}
-      </Select>
-      <FormHelperText>Required</FormHelperText>
-      {/* <div className="form-control">
-        <label htmlFor={name}>{label}</label>
-        <Field as="select" id={name} name={name} {...rest}>
-          {options.map((option) => {
-            return (
-              <option key={option.value} value={option.value}>
-                {option.key}
-              </option>
-            )
-          })}
-        </Field>
-        <ErrorMessage component={TextError} name={name} />
-      </div> */}
-    </>
+    <Select
+      name={name}
+      value={value}
+      onChange={(e) => {
+        setFieldValue(name, e.target.value)
+      }}
+    >
+      {children}
+    </Select>
   )
 }
 
-export default Select
+const SelectFormik = (props) => {
+  const { label, name, options, labelId, ...rest } = props
+  return (
+    <Box className="form-control" sx={{ width: "100%" }}>
+      <FormControl fullWidth>
+        <InputLabel id={labelId}>{label}</InputLabel>
+        <Field
+          name={name}
+          labelId={labelId}
+          component={CustomizedSelectForFormik}
+          {...rest}
+        >
+          {options.map((option) => {
+            return (
+              <MenuItem key={option.value} value={option.value}>
+                {option.key}
+              </MenuItem>
+            )
+          })}
+        </Field>
+      </FormControl>
+      <ErrorMessage component={TextError} name={name} />
+    </Box>
+  )
+}
+
+export default SelectFormik

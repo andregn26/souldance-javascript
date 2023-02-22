@@ -6,14 +6,13 @@ import { createTheme } from "@mui/material/styles"
 import { useSelector, useDispatch } from "react-redux"
 import { setSelectedPage } from "@/state"
 import { themeSettings } from "./theme"
-import Layout from "@/scenes/layout"
 import Homepage from "@/scenes/homepage"
 import FormPage from "@/scenes/form"
+import Layout from "./scenes/layout"
 
 function App() {
   const dispatch = useDispatch()
   const page = useSelector((state) => state.global.selectedPage)
-  console.log("🚀 ~ file: App.jsx:14 ~ App ~ page", page)
   const mode = useSelector((state) => state.global.mode)
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
   const [isTopOfPage, setIsTopOfPage] = useState(true)
@@ -35,9 +34,10 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route element={<Layout isTopOfPage={isTopOfPage} />}>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/fala-connosco" element={<FormPage />} />
+            <Route path="/" element={<Navigate to="homepage" replace />} />
+            <Route path="/homepage" element={<Homepage />} />
+            <Route element={<Layout />}>
+              <Route path="fala-connosco" element={<FormPage />} />
             </Route>
           </Routes>
         </ThemeProvider>

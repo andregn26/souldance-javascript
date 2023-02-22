@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "./Link"
+import Link from "../../../../components/Link"
 import {
   Box,
   Divider,
@@ -21,7 +21,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined"
 import InstagramIcon from "@mui/icons-material/Instagram"
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined"
-import ThemeButton from "./ThemeButton"
+import ThemeButton from "../../../../components/ThemeButton"
 
 const Sidebar = ({
   drawerWidth,
