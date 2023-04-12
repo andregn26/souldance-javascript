@@ -2,7 +2,8 @@ import React from "react"
 import { useState } from "react"
 import { Box, useMediaQuery } from "@mui/material"
 import { Outlet } from "react-router-dom"
-import NavBarLayout from "@/scenes/layout/navbar"
+import NavBarLayout from "@/scenes/layout/NavBarLayout"
+import Footer from "../footer"
 
 const Layout = (isTopOfPage) => {
   const isNonMobile = useMediaQuery("(min-width: 600px)")
@@ -18,6 +19,7 @@ const Layout = (isTopOfPage) => {
         />
         <Outlet />
       </Box>
+      <Footer />
     </Box>
   )
 }

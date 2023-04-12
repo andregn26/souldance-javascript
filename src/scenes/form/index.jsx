@@ -14,59 +14,43 @@ const FormPage = () => {
         {/* Width of the box that contains all the form elements */}
         <Box mx="auto">
           {/* the box that contains all the form elements */}
-          <CardOne
-            elevation={4}
-            sx={
-              isNonMobile1200
-                ? {
-                    display: "grid",
-                    gridTemplateColumns: "repeat(12, 1fr)",
-                    height: "80vh",
-                  }
-                : {
-                    display: "grid",
-                    gridTemplateRows: "repeat(12, 1fr)",
-                    height: "90vh",
-                  }
-            }
-          >
-            {/* Form */}
-            <Box
-              sx={
-                isNonMobile1200
-                  ? {
-                      gridColumn: "span 4",
-                      justifyItems: "center",
-                      padding: "2rem 3rem",
-                    }
-                  : {
-                      gridRow: "span 10",
-                      justifyItems: "center",
-                      padding: "2rem 3rem",
-                    }
-              }
+          {isNonMobile1200 ? (
+            <CardOne
+              elevation={4}
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(5, 1fr)",
+              }}
             >
-              <FormikContainer />
-            </Box>
-            {/*  Social Media container */}
-            <Box
-              sx={
-                isNonMobile1200
-                  ? { gridColumn: "span 8" }
-                  : { gridRow: "span 2" }
-              }
-            >
-              {isNonMobile1200 ? (
+              {/* All form container */}
+              <Box sx={{ gridColumn: "span 2", padding: "5rem" }}>
+                <FormikContainer />
+              </Box>
+
+              <Box sx={{ gridColumn: "span 3" }}>
                 <Box
                   sx={{
                     backgroundImage: `url(${FormImage})`,
+                    width: "100%",
                     height: "100%",
                     backgroundSize: "cover",
+                    backgroundPosition: "50% 5%",
                   }}
                 ></Box>
-              ) : null}
-            </Box>
-          </CardOne>
+              </Box>
+
+              {/*  Social Media container */}
+            </CardOne>
+          ) : (
+            <CardOne elevation={4}>
+              {/* All form container */}
+              <Box>
+                <FormikContainer />
+              </Box>
+
+              {/*  Social Media container */}
+            </CardOne>
+          )}
         </Box>
       </WidthContainer>
     </MainSectionContainer>

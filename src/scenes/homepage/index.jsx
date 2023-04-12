@@ -4,6 +4,7 @@ import Hero from "@/scenes/homepage/hero"
 import Services from "@/scenes/homepage/services"
 import SpeedDialTooltipOpen from "@/components/SpeedDial"
 import MenuHome from "./layoutHome"
+import Footer from "../footer"
 
 const Homepage = () => {
   return (
@@ -13,6 +14,7 @@ const Homepage = () => {
       <Hero />
       <AboutUs />
       <Services />
+      <Footer />
     </div>
   )
 }

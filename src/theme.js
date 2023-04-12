@@ -145,6 +145,7 @@ export const themeSettings = (mode) => {
       h2: {
         fontFamily: ["Inter", "sans-serif"].join(","),
         fontSize: "2.88rem",
+        fontWeight: "600",
         "@media (min-width:400px)": {
           fontSize: "3.4rem",
         },
@@ -207,9 +208,11 @@ export const themeSettings = (mode) => {
           fontSize: "2.4rem",
         },
       },
-      p: {
+      body1: {
         fontFamily: ["Inter", "sans-serif"].join(","),
         fontSize: "1.6rem",
+        fontWeight: "300",
+
         "@media (min-width:400px)": {
           fontSize: "1.62rem",
         },

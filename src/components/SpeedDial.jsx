@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Box from "@mui/material/Box"
+import { Box } from "@mui/material"
 import {
   SpeedDial,
   SpeedDialIcon,
@@ -47,6 +47,7 @@ const SpeedDialTooltipOpen = () => {
         position: "fixed",
         bottom: 16,
         right: 16,
+        zIndex: "1000",
       }}
     >
       <SpeedDial ariaLabel="SpeedDial tooltip example" icon={<SpeedDialIcon />}>
